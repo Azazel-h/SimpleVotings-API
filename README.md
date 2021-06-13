@@ -1,0 +1,1 @@
+SimpleVotings API
