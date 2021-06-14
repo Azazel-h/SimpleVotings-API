@@ -11,9 +11,6 @@ class VoteSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return Vote.objects.create(**validated_data)
 
-    def update(self, validated_data):
-        return Vote.objects.create(**validated_data)
-
 class ChoiceSerializer(serializers.ModelSerializer):
     votes = VoteSerializer(many=True, required=False)
     class Meta:
@@ -23,8 +20,6 @@ class ChoiceSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return Choice.objects.create(**validated_data)
 
-    def update(self, validated_data):
-        return Choice.objects.create(**validated_data)
 
 class VotingSerializer(serializers.ModelSerializer):
     choices = ChoiceSerializer(many=True, required=False)
@@ -35,5 +30,6 @@ class VotingSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return Voting.objects.create(**validated_data)
 
-    def update(self, validated_data):
+    def post(self, validated_data):
+
         return Voting.objects.create(**validated_data)
