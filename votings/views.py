@@ -30,10 +30,19 @@ class VotingDetailView(APIView):
         serializer = VotingSerializer(voting)
         return Response(serializer.data)
 
-    def post(self, request, pk):
+    def put(self, request, pk):
         data = request.data
         data['voting'] = pk
         serializer = ChoiceSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+
+    def post(self, request, pk):
+        data = request.data
+        data['user'] = request.user.id
+        serializer = VoteSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=201)

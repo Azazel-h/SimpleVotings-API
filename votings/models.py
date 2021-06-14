@@ -10,5 +10,5 @@ class Choice(models.Model):
     text = models.CharField(max_length=65)
 
 class Vote(models.Model):
-    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE, related_name='votes')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
