@@ -39,12 +39,15 @@ class VotingDetailView(APIView):
 
     def post(self, request, pk):
         data = request.data
+        voting = Voting.objects.get(pk=pk)
         get_object_or_404(Choice.objects.filter(voting=pk), pk=request.data["choice"])
         data['user'] = get_object_or_404(User, pk=request.user.id).id
         serializer = VoteSerializer(data=data)
         valid = serializer.is_valid()
         if not Vote.objects.filter(choice__in=Choice.objects.filter(voting=pk), user=data['user']):
             if valid:
+                voting.total_votes += 1
+                voting.save()
                 serializer.save()
                 return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)

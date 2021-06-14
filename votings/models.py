@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class Voting(models.Model):
     title = models.CharField(max_length=65)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    total_votes = models.IntegerField(default=0)
 
 class Choice(models.Model):
     voting = models.ForeignKey(Voting, on_delete=models.CASCADE, related_name='choices')
