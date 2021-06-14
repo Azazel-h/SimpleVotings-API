@@ -1,8 +1,6 @@
 from django.contrib.auth.models import User
-from django.http import JsonResponse
 from rest_framework.decorators import permission_classes
 from rest_framework.generics import get_object_or_404
-from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
 from .models import Voting, Choice, Vote
 from rest_framework.response import Response
@@ -17,7 +15,7 @@ class VotingsListView(APIView):
 
     def post(self, request):
         data = request.data
-        data["author"] = request.user.id
+        data["author"] = get_object_or_404(User ,pk=request.user.id)
         serializer = VotingSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -26,13 +24,13 @@ class VotingsListView(APIView):
 
 class VotingDetailView(APIView):
     def get(self, request, pk):
-        voting = Voting.objects.get(pk=pk)
+        voting = get_object_or_404(Voting ,pk=pk)
         serializer = VotingSerializer(voting)
         return Response(serializer.data)
 
     def put(self, request, pk):
         data = request.data
-        data['voting'] = pk
+        data['voting'] = get_object_or_404(Voting ,pk=pk).id
         serializer = ChoiceSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -41,7 +39,8 @@ class VotingDetailView(APIView):
 
     def post(self, request, pk):
         data = request.data
-        data['user'] = request.user.id
+        get_object_or_404(Choice.objects.filter(voting=pk), pk=request.data["choice"])
+        data['user'] = get_object_or_404(User, pk=request.user.id).id
         serializer = VoteSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
