@@ -1,4 +1,5 @@
 ## URLs
+####Login and Logout still doesn't work properly
 ### Accounts
 ```
 api/accounts/signup - Registration. POST request. - JSON Example: {"email": "example@example.com", "username": "example", "password": "TestPassword"}
