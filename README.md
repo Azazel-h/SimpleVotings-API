@@ -1,6 +1,6 @@
-#Simple API created with DjangoRestFramework
-Understandable and easy to change
-Feel free to use in your own purposes
+# Simple API created with DjangoRestFramework</br>
+Understandable and easy to change</br>
+Feel free to use in your own purposes</br>
 
 ## URLs
 
