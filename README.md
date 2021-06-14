@@ -17,7 +17,7 @@ api/accounts/profile/ - Getting all votings created by current user. GET request
 ### Votings (Authtoken needed)
 ```
 api/votings/list/ - Getting a list of votings. GET request.
-api/votings/list/ - Create new VOTING. POST request. - JSON Example: {"title": "VotingTestTitle", "type": 0-Can vote only only for one choice || 1-Can vote for every choice}
+api/votings/list/ - Create new VOTING. POST request. - JSON Example: {"title": "VotingTestTitle", "type": 0-Can vote only for one choice || 1-Can vote for every choice}
 api/votings/id/ Getting a VOTING by id. GET request.
 api/votings/id/ Creating a CHOICE by id. PUT request. - JSON Example: {"text": "ChoiceText"}
 api/votings/id/ Creating a VOTE by id. POST request. - JSON Example: {"choice": choice_id}
