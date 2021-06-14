@@ -19,5 +19,5 @@ api/votings/ - Getting a list of votings. GET request.
 api/votings/ - Create new VOTING. POST request. - JSON Example: {"title": "VotingTestTitle"}
 api/votings/{ id } Getting a VOTING by id. GET request.
 api/votings/{ id } Creating a CHOICE by id. PUT request. - JSON Example: {"text": "ChoiceText"}
-api/votings/{ id } Creating a VOTE by id. POST request. - JSON Example: {"text": "ChoiceText"}
+api/votings/{ id } Creating a VOTE by id. POST request. - JSON Example: {"choice": choice_id}
 ```
