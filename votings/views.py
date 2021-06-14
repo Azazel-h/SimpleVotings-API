@@ -15,7 +15,7 @@ class VotingsListView(APIView):
 
     def post(self, request):
         data = request.data
-        data["author"] = get_object_or_404(User ,pk=request.user.id)
+        data["author"] = get_object_or_404(User ,pk=request.user.id).id
         serializer = VotingSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -30,11 +30,13 @@ class VotingDetailView(APIView):
 
     def put(self, request, pk):
         data = request.data
-        data['voting'] = get_object_or_404(Voting ,pk=pk).id
+        data['voting'] = pk
         serializer = ChoiceSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
+        valid = serializer.is_valid()
+        if get_object_or_404(Voting, pk=pk).author == request.user:
+            if valid:
+                serializer.save()
+                return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
     def post(self, request, pk):
@@ -42,7 +44,9 @@ class VotingDetailView(APIView):
         get_object_or_404(Choice.objects.filter(voting=pk), pk=request.data["choice"])
         data['user'] = get_object_or_404(User, pk=request.user.id).id
         serializer = VoteSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
+        valid = serializer.is_valid()
+        if not Vote.objects.filter(choice__in=Choice.objects.filter(voting=pk), user=data['user']):
+            if valid:
+                serializer.save()
+                return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
