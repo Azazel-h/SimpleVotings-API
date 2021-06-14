@@ -9,7 +9,7 @@ Feel free to use in your own purposes</br>
 
 ### Accounts (Authtoken needed: PROFILE, LOGOUT)
 ```
-api/accounts/signup/ - Registration. POST request. - JSON Example: {"email": "example@example.com", "username": "example", "password": "TestPassword"}
+api/accounts/signup/ - Registration. POST request. - JSON Example: {"email": "example@example.com", "username": "example", "password": "TestPassword", "password2": "TestPassword"}
 api/accounts/login/ - Authentication. POST request. - JSON Example: {"username": "example", "password": "example"} - YOU WILL GET AN AUTHTOKEN AFTER LOGGING IN -
 api/accounts/logout/ - Logout. POST request. - DELETE AUTHTOKEN -
 api/accounts/profile/ - Getting all votings created by current user. GET request.
