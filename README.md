@@ -1,3 +1,7 @@
+#Simple API created with DjangoRestFramework
+Understandable and easy to change
+Feel free to use in your own purposes
+
 ## URLs
 
 #### Login and Logout still doesn't work properly
