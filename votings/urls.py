@@ -3,6 +3,6 @@ from django.urls import path, include
 from .views import VotingsListView, VotingDetailView
 
 urlpatterns = [
-    path('', VotingsListView.as_view()),
-    path('<int:pk>', VotingDetailView.as_view())
+    path('list/', VotingsListView.as_view()),
+    path('<int:pk>/', VotingDetailView.as_view())
 ]

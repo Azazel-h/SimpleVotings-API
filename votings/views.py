@@ -1,11 +1,17 @@
 from django.contrib.auth.models import User
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.generics import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from .models import Voting, Choice, Vote
 from rest_framework.response import Response
 from .serializers import VotingSerializer, ChoiceSerializer, VoteSerializer
 
+
 class VotingsListView(APIView):
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
+
     def get(self, request):
         votings = Voting.objects.all()
         serializer = VotingSerializer(votings, many=True)
@@ -13,7 +19,7 @@ class VotingsListView(APIView):
 
     def post(self, request):
         data = request.data
-        data["author"] = get_object_or_404(User ,pk=request.user.id).id
+        data["author"] = request.user.id
         serializer = VotingSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -21,6 +27,9 @@ class VotingsListView(APIView):
         return Response(serializer.errors, status=400)
 
 class VotingDetailView(APIView):
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
+
     def get(self, request, pk):
         voting = get_object_or_404(Voting ,pk=pk)
         serializer = VotingSerializer(voting)
@@ -41,7 +50,7 @@ class VotingDetailView(APIView):
         data = request.data
         voting = Voting.objects.get(pk=pk)
         get_object_or_404(Choice.objects.filter(voting=pk), pk=request.data["choice"])
-        data['user'] = get_object_or_404(User, pk=request.user.id).id
+        data['user'] = request.user.id
         serializer = VoteSerializer(data=data)
         valid = serializer.is_valid()
         if not Vote.objects.filter(choice__in=Choice.objects.filter(voting=pk), user=data['user']):
