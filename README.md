@@ -4,20 +4,21 @@ Feel free to use in your own purposes</br>
 
 ## URLs
 
-#### Login and Logout still doesn't work properly
+#### IMPORTANT: YOU WILL GET AN AUTHTOKEN AFTER LOGGING IN <br/> Include it in your request's headers like this <br/> { Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b }
 
-### Accounts
+
+### Accounts (Authtoken needed: PROFILE, LOGOUT)
 ```
-api/accounts/signup - Registration. POST request. - JSON Example: {"email": "example@example.com", "username": "example", "password": "TestPassword"}
-api/accounts/login/ - Authentication. POST request. - JSON Example: {"username": "example", "password": "example"}
-api/accounts/logout/ - Logout. POST request.
-api/accounts/profile - Getting all votings created by current user. GET request.
+api/accounts/signup/ - Registration. POST request. - JSON Example: {"email": "example@example.com", "username": "example", "password": "TestPassword"}
+api/accounts/login/ - Authentication. POST request. - JSON Example: {"username": "example", "password": "example"} - YOU WILL GET AN AUTHTOKEN AFTER LOGGING IN -
+api/accounts/logout/ - Logout. POST request. - DELETE AUTHTOKEN -
+api/accounts/profile/ - Getting all votings created by current user. GET request.
 ```
-### Votings
+### Votings (Authtoken needed)
 ```
-api/votings/ - Getting a list of votings. GET request.
-api/votings/ - Create new VOTING. POST request. - JSON Example: {"title": "VotingTestTitle"}
-api/votings/{ id } Getting a VOTING by id. GET request.
-api/votings/{ id } Creating a CHOICE by id. PUT request. - JSON Example: {"text": "ChoiceText"}
-api/votings/{ id } Creating a VOTE by id. POST request. - JSON Example: {"choice": choice_id}
+api/votings/list/ - Getting a list of votings. GET request.
+api/votings/list/ - Create new VOTING. POST request. - JSON Example: {"title": "VotingTestTitle"}
+api/votings/{ id }/ Getting a VOTING by id. GET request.
+api/votings/{ id }/ Creating a CHOICE by id. PUT request. - JSON Example: {"text": "ChoiceText"}
+api/votings/{ id }/ Creating a VOTE by id. POST request. - JSON Example: {"choice": choice_id}
 ```
