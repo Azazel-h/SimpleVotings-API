@@ -1,10 +1,8 @@
 from django.contrib.auth.models import User
-from rest_framework.decorators import permission_classes
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
 from .models import Voting, Choice, Vote
 from rest_framework.response import Response
-from rest_framework import status, permissions
 from .serializers import VotingSerializer, ChoiceSerializer, VoteSerializer
 
 class VotingsListView(APIView):
