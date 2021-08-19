@@ -32,7 +32,7 @@ class LoginView(APIView):
         user = authenticate(username=request.data['username'], password=request.data['password'])
         if user:
             token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=201)
+            return Response({'token': token.key}, status=200)
         return Response({'error': 'Invalid Credentials'}, status=400)
 
 
@@ -43,4 +43,4 @@ class LogOutView(APIView):
         user = request.user
         user.auth_token.delete()
         user.save()
-        return Response(status=201)
+        return Response(status=200)
