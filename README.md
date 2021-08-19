@@ -1,6 +1,17 @@
 # Simple API created with DjangoRestFramework</br>
 Understandable and easy to change</br>
 Feel free to use in your own purposes</br>
+## Installation
+```
+git clone https://github.com/Azazel-h/SimpleVotings-API.git
+cd SimpleVotings-API
+pip install --upgrade pip
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
+
 ## URLs
 
 #### IMPORTANT: YOU WILL GET AN AUTHTOKEN AFTER LOGIN IN 
