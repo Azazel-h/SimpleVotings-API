@@ -31,5 +31,4 @@ class VotingSerializer(serializers.ModelSerializer):
         return Voting.objects.create(**validated_data)
 
     def post(self, validated_data):
-
         return Voting.objects.create(**validated_data)
