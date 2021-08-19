@@ -3,7 +3,9 @@ Understandable and easy to change</br>
 Feel free to use in your own purposes</br>
 ## URLs
 
-#### IMPORTANT: YOU WILL GET AN AUTHTOKEN AFTER LOGIN IN <br/> Include it in your request's headers like this <br/> { Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b }
+#### IMPORTANT: YOU WILL GET AN AUTHTOKEN AFTER LOGIN IN 
+<br/> Include it in your request's headers like this <br/> 
+{ Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b }
 
 
 ### Accounts (Authtoken needed: PROFILE, LOGOUT)
