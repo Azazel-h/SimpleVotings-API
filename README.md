@@ -1,4 +1,5 @@
-# Simple API created with DjangoRestFramework</br> [![Django CI](https://github.com/Azazel-h/SimpleVotings-API/actions/workflows/django.yml/badge.svg)](https://github.com/Azazel-h/SimpleVotings-API/actions/workflows/django.yml)
+# Simple API created with DjangoRestFramework</br> [![Django CI](https://github.com/Azazel-h/SimpleVotings-API/actions/workflows/django.yml/badge.svg)](https://github.com/Azazel-h/SimpleVotings-API/actions/workflows/django.yml) [![Pylint](https://github.com/Azazel-h/SimpleVotings-API/actions/workflows/pylint.yml/badge.svg)](https://github.com/Azazel-h/SimpleVotings-API/actions/workflows/pylint.yml)
+
 > - Understandable and easy to change</br>
 > - Feel free to use in your own purposes</br>
 ## Installation
